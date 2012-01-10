@@ -324,7 +324,7 @@
    */
   var _gE = function(opts){
    var obj={};
-   $.each($('#'+opts.form+' > input, input:radio:selected, input:checkbox:checked, textarea'), function(k,v){
+   $.each($(':input, input:radio:selected, input:checkbox:checked, textarea'), function(k,v){
     if ((vStr(v.value))&&(vStr(v.name))){
      obj[v.name] = v.value;
     }
