@@ -41,7 +41,7 @@ $('#form').AJAX();
 ```
 
 ### Using CSRF token (here we use PHP $_SESSION['token'])
-Please see NOTES section for more information about this feature and the checksum feature.
+Please see NOTES section for more information about the CSRF feature.
 
 ```javascript
 $('#form').AJAX(appID:'<?echo $_SESSION["token"]); ?>'});
@@ -100,7 +100,9 @@ This project includes a transparent method of checksumming the submitted
 form data. Native base64 and md5 encoding has been added to dynamically
 serialize the form data to be processed and generating a value for the
 Content-MD5 header which (if needed) can be verified on the server. Please
-also see the proxy.php script for more information on this feature.
+also see the proxy.php script for more information on this feature. For more
+information regarding the 'Content-MD5' header option please see the following
+link http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.15
 
 Author: Jason Gerfen <jason.gerfen@gmail.com>
 License: GPL (see LICENSE)
