@@ -36,7 +36,7 @@
    <h3>Example using default options</h3>
    <p>The basic usage example can be demonstrated here.</p>
    <p style="text-align: center"><pre>$('#formID').AJAX();</pre></p>
-   <form id="default" name="default" style="default" method="post" action="example.html">
+   <form id="default" name="default" style="default" method="post" action="proxy.php">
     <label for="name">Name: <span class="required">*</span></label>
      <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
     <label for="email">Email Address: <span class="required">*</span></label>
@@ -60,7 +60,7 @@
    <h3>Example setting customized X-ALT-Header value (good for XSRF)</h3>
    <p>By changing the 'appID' option you can customize the X-ALT-Header that gets sent to the server.</p>
    <p style="text-align: center"><pre>$('#formID').AJAX({appID:'myWickedApp'});</pre></p>
-   <form id="appid" name="default" style="default" method="post" action="example.html">
+   <form id="appid" name="default" style="default" method="post" action="proxy.php">
     <label for="name">Name: <span class="required">*</span></label>
      <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
     <label for="email">Email Address: <span class="required">*</span></label>
@@ -84,7 +84,7 @@
    <h3>Example changing the context option</h3>
    <p>Associating the XMLHttpRequest with a different DOM object example.</p>
    <p style="text-align: center"><pre>$('#formID').AJAX({context:'divID'});</pre></p>
-   <form id="context" name="default" style="default" method="post" action="example.html">
+   <form id="context" name="default" style="default" method="post" action="proxy.php">
     <label for="name">Name: <span class="required">*</span></label>
      <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
     <label for="email">Email Address: <span class="required">*</span></label>
@@ -109,7 +109,7 @@
    <h3>Example disabling auto-caching</h3>
    <p>Simple method of disabling the caching mechanisms.</p>
    <p style="text-align: center"><pre>$('#formID').AJAX({cache:false});</pre></p>
-   <form id="caching" name="default" style="default" method="post" action="example.html">
+   <form id="caching" name="default" style="default" method="post" action="proxy.php">
     <label for="name">Name: <span class="required">*</span></label>
      <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
     <label for="email">Email Address: <span class="required">*</span></label>
@@ -133,7 +133,7 @@
    <h3>Enable cross-domain requests</h3>
    <p>This example demonstrates enabling cross-origin requests using JSONP, but supports XML, SCRIPT, JSON and JSONP data types.</p>
    <p style="text-align: center"><pre>$('#formID').AJAX({type:'jsonp'});</pre></p>
-   <form id="datatype" name="default" style="default" method="post" action="example.html">
+   <form id="datatype" name="default" style="default" method="post" action="proxy.php">
     <label for="name">Name: <span class="required">*</span></label>
      <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
     <label for="email">Email Address: <span class="required">*</span></label>
@@ -162,7 +162,7 @@
    <p style="text-align: center"><pre>$('#formID').AJAX({callback:function(results){
    console.log(results);
 }});</pre></p>
-   <form id="callback" name="default" style="default" method="post" action="example.html">
+   <form id="callback" name="default" style="default" method="post" action="proxy.php">
     <label for="name">Name: <span class="required">*</span></label>
      <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
     <label for="email">Email Address: <span class="required">*</span></label>
@@ -191,7 +191,7 @@
    <p style="text-align: center"><pre>$('#formID').AJAX({errCallback:function(results){
    console.log(results);
 }});</pre></p>
-   <form id="errCallback" name="default" style="default" method="post" action="example.html">
+   <form id="errCallback" name="default" style="default" method="post" action="proxy.php">
     <label for="name">Name: <span class="required">*</span></label>
      <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
     <label for="email">Email Address: <span class="required">*</span></label>
