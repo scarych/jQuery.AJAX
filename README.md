@@ -40,8 +40,8 @@
 $('#form').AJAX();
 ```
 
-### Using CSRF token (here we use PHP $_SESSION['token']). Please see NOTES
-    section for more information about this feature and the checksum feature.
+### Using CSRF token (here we use PHP $_SESSION['token'])
+Please see NOTES section for more information about this feature and the checksum feature.
 ```javascript
 $('#form').AJAX(appID:'<?echo $_SESSION['token']); ?>'});
 ```
