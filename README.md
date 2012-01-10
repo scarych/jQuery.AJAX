@@ -44,7 +44,7 @@ $('#form').AJAX();
 Please see NOTES section for more information about this feature and the checksum feature.
 
 ```javascript
-$('#form').AJAX(appID:'<?echo $_SESSION['token']); ?>'});
+$('#form').AJAX(appID:'<?echo $_SESSION["token"]); ?>'});
 ```
 
 ### Disable caching
