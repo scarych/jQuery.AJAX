@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <title>jQuery AJAX Plugin Demo</title>
+
+ <!-- this stylesheet was ripped from an article on net tuts -->
+ <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+
+ <!-- Load the jQuery libraries -->
+ <script src="http://code.jquery.com/jquery.js"></script>
+
+ <!-- Load the jQuery handleStorage plugin -->
+ <script src="jQuery.AJAX.min.js"></script>
+</head>
+
+<body>
+ <div style="width:70%; word-wrap:break-word">
+  <h2><strong>jQuery AJAX plug-in demo's</strong></h2>
+  <p style="text-align:center">
+   <blockquote>
+    Need simple XMLHttpRequest functionality? This should do the trick. I may re-write this in
+    pure java-script later but for the ease of use and quickness of implementation
+    this will do.
+   </blockquote>
+  </p>
+
+  <!-- example using default options -->
+  <script>
+   var $j = jQuery.noConflict();
+   $j(document).ready(function() {
+    $j('#default').AJAX();
+   });
+  </script>
+  <div id="contact-form" class="clearfix">
+   <h3>Example using default options</h3>
+   <p>The basic usage example can be demonstrated here.</p>
+   <p style="text-align: center"><pre>$('#formID').AJAX();</pre></p>
+   <form id="default" name="default" style="default" method="post" action="example.html">
+    <label for="name">Name: <span class="required">*</span></label>
+     <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
+    <label for="email">Email Address: <span class="required">*</span></label>
+     <input type="email" id="email" name="email" value="" placeholder="johndoe@example.com" required="required" />
+    <label for="message">Message: <span class="required">*</span></label>
+     <textarea id="message" name="message" placeholder="Your message must be greater than 20 charcters" required="required" data-minlength="20"></textarea>
+    <span id="loading"></span>
+     <input type="submit" value="Send it" id="submit-button" />
+     <p id="req-field-desc"></p>
+   </form>
+  </div>
+
+  <!-- example changing the appID option -->
+  <script>
+   var $j = jQuery.noConflict();
+   $j(document).ready(function() {
+    $j('#appid').AJAX({appID:'Custom X-ALT-Header value'});
+   });
+  </script>
+  <div id="contact-form" class="clearfix">
+   <h3>Example setting customized X-ALT-Header value (good for XSRF)</h3>
+   <p>By changing the 'appID' option you can customize the X-ALT-Header that gets sent to the server.</p>
+   <p style="text-align: center"><pre>$('#formID').AJAX({appID:'myWickedApp'});</pre></p>
+   <form id="appid" name="default" style="default" method="post" action="example.html">
+    <label for="name">Name: <span class="required">*</span></label>
+     <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
+    <label for="email">Email Address: <span class="required">*</span></label>
+     <input type="email" id="email" name="email" value="" placeholder="johndoe@example.com" required="required" />
+    <label for="message">Message: <span class="required">*</span></label>
+     <textarea id="message" name="message" placeholder="Your message must be greater than 20 charcters" required="required" data-minlength="20"></textarea>
+    <span id="loading"></span>
+     <input type="submit" value="Send it" id="submit-button" />
+     <p id="req-field-desc"></p>
+   </form>
+  </div>
+
+  <!-- example changing the context option -->
+  <script>
+   var $j = jQuery.noConflict();
+   $j(document).ready(function() {
+    $j('#context').AJAX({context:'divID'});
+   });
+  </script>
+  <div id="contact-form" class="clearfix">
+   <h3>Example changing the context option</h3>
+   <p>Associating the XMLHttpRequest with a different DOM object example.</p>
+   <p style="text-align: center"><pre>$('#formID').AJAX({context:'divID'});</pre></p>
+   <form id="context" name="default" style="default" method="post" action="example.html">
+    <label for="name">Name: <span class="required">*</span></label>
+     <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
+    <label for="email">Email Address: <span class="required">*</span></label>
+     <input type="email" id="email" name="email" value="" placeholder="johndoe@example.com" required="required" />
+    <label for="message">Message: <span class="required">*</span></label>
+     <textarea id="message" name="message" placeholder="Your message must be greater than 20 charcters" required="required" data-minlength="20"></textarea>
+    <span id="loading"></span>
+     <input type="submit" value="Send it" id="submit-button" />
+     <p id="req-field-desc"></p>
+   </form>
+   <div id="divID"></div>
+  </div>
+
+  <!-- example disabling cache option -->
+  <script>
+   var $j = jQuery.noConflict();
+   $j(document).ready(function() {
+    $j('#caching').AJAX({cache:false});
+   });
+  </script>
+  <div id="contact-form" class="clearfix">
+   <h3>Example disabling auto-caching</h3>
+   <p>Simple method of disabling the caching mechanisms.</p>
+   <p style="text-align: center"><pre>$('#formID').AJAX({cache:false});</pre></p>
+   <form id="caching" name="default" style="default" method="post" action="example.html">
+    <label for="name">Name: <span class="required">*</span></label>
+     <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
+    <label for="email">Email Address: <span class="required">*</span></label>
+     <input type="email" id="email" name="email" value="" placeholder="johndoe@example.com" required="required" />
+    <label for="message">Message: <span class="required">*</span></label>
+     <textarea id="message" name="message" placeholder="Your message must be greater than 20 charcters" required="required" data-minlength="20"></textarea>
+    <span id="loading"></span>
+     <input type="submit" value="Send it" id="submit-button" />
+     <p id="req-field-desc"></p>
+   </form>
+  </div>
+
+  <!-- example changing the data type for cross domain -->
+  <script>
+   var $j = jQuery.noConflict();
+   $j(document).ready(function() {
+    $j('#datatype').AJAX({type:'jsonp'});
+   });
+  </script>
+  <div id="contact-form" class="clearfix">
+   <h3>Enable cross-domain requests</h3>
+   <p>This example demonstrates enabling cross-origin requests using JSONP, but supports XML, SCRIPT, JSON and JSONP data types.</p>
+   <p style="text-align: center"><pre>$('#formID').AJAX({type:'jsonp'});</pre></p>
+   <form id="datatype" name="default" style="default" method="post" action="example.html">
+    <label for="name">Name: <span class="required">*</span></label>
+     <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
+    <label for="email">Email Address: <span class="required">*</span></label>
+     <input type="email" id="email" name="email" value="" placeholder="johndoe@example.com" required="required" />
+    <label for="message">Message: <span class="required">*</span></label>
+     <textarea id="message" name="message" placeholder="Your message must be greater than 20 charcters" required="required" data-minlength="20"></textarea>
+    <span id="loading"></span>
+     <input type="submit" value="Send it" id="submit-button" />
+     <p id="req-field-desc"></p>
+   </form>
+  </div>
+
+  <!-- example using a callback function option -->
+  <script>
+   var $j = jQuery.noConflict();
+   $j(document).ready(function() {
+    $j('#callback').AJAX({callback: function(results){
+      console.log(results);
+     }
+    });
+   });
+  </script>
+  <div id="contact-form" class="clearfix">
+   <h3>Example using an onSuccess callback function</h3>
+   <p>Here you can set a custom function to get executed upon the successful execution per form.</p>
+   <p style="text-align: center"><pre>$('#formID').AJAX({callback:function(results){
+   console.log(results);
+}});</pre></p>
+   <form id="callback" name="default" style="default" method="post" action="example.html">
+    <label for="name">Name: <span class="required">*</span></label>
+     <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
+    <label for="email">Email Address: <span class="required">*</span></label>
+     <input type="email" id="email" name="email" value="" placeholder="johndoe@example.com" required="required" />
+    <label for="message">Message: <span class="required">*</span></label>
+     <textarea id="message" name="message" placeholder="Your message must be greater than 20 charcters" required="required" data-minlength="20"></textarea>
+    <span id="loading"></span>
+     <input type="submit" value="Send it" id="submit-button" />
+     <p id="req-field-desc"></p>
+   </form>
+  </div>
+
+  <!-- example using a callback function option on errors -->
+  <script>
+   var $j = jQuery.noConflict();
+   $j(document).ready(function() {
+    $j('#errCallback').AJAX({errCallback: function(results){
+      console.log(results);
+     }
+    });
+   });
+  </script>
+  <div id="contact-form" class="clearfix">
+   <h3>Example using an onError callback function</h3>
+   <p>Here you can set a custom function to get executed upon the errors encountered.</p>
+   <p style="text-align: center"><pre>$('#formID').AJAX({errCallback:function(results){
+   console.log(results);
+}});</pre></p>
+   <form id="errCallback" name="default" style="default" method="post" action="example.html">
+    <label for="name">Name: <span class="required">*</span></label>
+     <input type="text" id="name" name="name" value="" placeholder="John Doe" required="required" />
+    <label for="email">Email Address: <span class="required">*</span></label>
+     <input type="email" id="email" name="email" value="" placeholder="johndoe@example.com" required="required" />
+    <label for="message">Message: <span class="required">*</span></label>
+     <textarea id="message" name="message" placeholder="Your message must be greater than 20 charcters" required="required" data-minlength="20"></textarea>
+    <span id="loading"></span>
+     <input type="submit" value="Send it" id="submit-button" />
+     <p id="req-field-desc"></p>
+   </form>
+  </div>
+ </div>
+
+</body>
+</html>
