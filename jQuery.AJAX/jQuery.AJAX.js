@@ -62,19 +62,20 @@
     var opts = $.extend({}, defaults, o);
     $('#'+opts.formID.attr('id')).on('submit', function(e){
      e.preventDefault();
+     var _data = _serialize(_gE(opts));
      $.ajax({
       form: opts.formID.attr('id'),
       url: opts.formID.attr('action'),
       type: opts.formID.attr('method'),
-      data: opts.formID.serialize(),
+      data: _data,
       context: opts.context,
       cache: opts.cache,
       crossDomain: (opts.type==='jsonp') ? true : false,
       dataType: opts.type,
-      beforeSend: function(xhr) {
+      beforeSend: function(xhr){
        xhr.setRequestHeader('X-Alt-Referer', opts.appID);
        if (opts.formID.serialize()){
-        xhr.setRequestHeader('Content-MD5', base64.encode(md5(opts.formID.serialize())));
+        xhr.setRequestHeader('Content-MD5', base64.encode(md5(_data)));
        } else {
         xhr.setRequestHeader('Content-MD5', base64.encode(md5(o.appID)));
        }
@@ -315,6 +316,62 @@
     }
     return r;
    }
+  }
+
+  /**
+   * @function _gE
+   * @abstract Generates object of specified DOM form element that are non-null
+   */
+  var _gE = function(opts){
+   var obj={};
+   $.each($('#'+opts.form+' > input, input:radio:selected, input:checkbox:checked, textarea'), function(k,v){
+    if ((vStr(v.value))&&(vStr(v.name))){
+     obj[v.name] = v.value;
+    }
+   });
+   return obj;
+  }
+
+  /**
+   * @function _serialize
+   * @abstract Create serialized string of object
+   */
+  var _serialize = function(obj){
+   if (szCk(obj)>0){
+    var x='';
+    $.each(obj, function(a, b){
+     if (typeof b==='object'){
+      _serialize(b);
+     } else {
+      x+=a+'='+b+'&';
+     }
+    });
+    x = x.substring(0, x.length-1);
+   } else {
+    x = false;
+   }
+   return x;
+  }
+
+  /**
+   * @function szCk
+   * @abstract Performs a check on object sizes
+   */
+  var szCk = function(obj){
+   var n = 0;
+   $.each(obj, function(k, v){
+    if (obj.hasOwnProperty(k)) n++;
+   });
+   return n;
+  }
+
+  /**
+   * @function vStr
+   * @abstract Function used combine string checking functions
+   */
+  var vStr = function(x){
+   return ((x===false)||(x.length===0)||(!x)||(x===null)||
+           (x==='')||(typeof x==='undefined')) ? false : true;
   }
 
   /* robot, do something */
