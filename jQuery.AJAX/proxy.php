@@ -38,7 +38,7 @@ function _serialize($array)
 
 function JSONencode($array){
  if (!function_exists('json_encode')) {
-  return self::arr2json($array);
+  return arr2json($array);
  } else {
   return json_encode($array);
  }
