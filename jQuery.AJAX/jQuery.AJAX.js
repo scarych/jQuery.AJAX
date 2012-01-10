@@ -79,7 +79,7 @@
         xhr.setRequestHeader('Content-MD5', base64.encode(md5(o.appID)));
        }
        ((opts.perCallback)&&($.isFunction(opts.preCallback))) ?
-         opts.preCallback(xhr, status, error) : console.log(xhr+status+error);
+         opts.preCallback(xhr) : console.log(xhr);
       },
       success: function(x){
        ((opts.callback)&&($.isFunction(opts.callback))) ?
