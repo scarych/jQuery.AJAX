@@ -24,6 +24,8 @@ if (!empty($_POST)){
  }
 }
 
+exit(JSONencode(array('success'=>'All validation checks passed')));
+
 function _serialize($array)
 {
  if (count($array)>0){
