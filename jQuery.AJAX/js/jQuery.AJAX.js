@@ -100,6 +100,7 @@
    * @function md5
    * @abstract Performs MD5 hash of serialized form data. The data is then
    *           to be used on the server as a checksum
+   * @author   http://www.webtoolkit.info/javascript-base64.html
    */
   var md5 = function(v){
    function RotateLeft(lValue, iShiftBits){
@@ -267,6 +268,7 @@
    * @function base64
    * @abstract Performs base64 encoding of argument by first encoding in
    *           a strict UTF8 format
+   * @author   http://www.webtoolkit.info/javascript-base64.html
    */
   var base64 = {
    key: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
@@ -296,6 +298,7 @@
   /**
    * @function utf8
    * @abstract Helps perform encoding of specified data
+   * @author   http://www.webtoolkit.info/javascript-base64.html
    */
   var utf8 = {
    encode: function(v){
