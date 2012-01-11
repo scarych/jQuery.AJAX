@@ -21,11 +21,11 @@ if (!isset($_SESSION[$libs->_getRealIPv4()])){
 session_regenerate_id(true);
 
 /* create array of details that are used in the next steps */
-$details = array('details'=>array('Remote address'=>$libs->_getRealIPv4(),
-                                  'Session ID'=>$_SESSION[$libs->_getRealIPv4()],
-                                  'X-Alt-Referer header'=>getenv('HTTP_X_ALT_REFERER'),
-                                  'Content-MD5 header'=>getenv('HTTP_CONTENT_MD5'),
-                                  'Serialized POST data'=>$libs->_serialize($_POST)));
+$details = array('Remote address'=>$libs->_getRealIPv4(),
+                 'Session ID'=>$_SESSION[$libs->_getRealIPv4()],
+                 'X-Alt-Referer header'=>getenv('HTTP_X_ALT_REFERER'),
+                 'Content-MD5 header'=>getenv('HTTP_CONTENT_MD5'),
+                 'Serialized POST data'=>$libs->_serialize($_POST)));
 
 /* verify an XMLHttpRequest was made */
 if (strcmp($_SERVER['HTTP_X_REQUESTED_WITH'], 'XMLHttpRequest')!==0){
