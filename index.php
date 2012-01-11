@@ -41,20 +41,31 @@ session_regenerate_id(true);
   var $j = jQuery.noConflict();
   $j(document).ready(function(){
    function _message(obj){
+    var details = '';
     $j.each(obj, function(k, v){
      if (k=='error'){
-      $j('#message').html('<div class="error">'+v+'</div>');
+      $j('#message').html('<div class="error">'+v+'</div>').fadeIn(1000);
      }
      if (k=='warning'){
-      $j('#message').html('<div class="warning">'+v+'</div>');
+      $j('#message').html('<div class="warning">'+v+'</div>').fadeIn(1000);
      }
      if (k=='info'){
-      $j('#message').html('<div class="info">'+v+'</div>');
+      $j('#message').html('<div class="info">'+v+'</div>').fadeIn(1000);
      }
      if (k=='success'){
-      $j('#message').html('<div class="success">'+v+'</div>');
+      $j('#message').html('<div class="success">'+v+'</div>').fadeIn(1000);
+     }
+     if (typeof v=='object'){
+      $j('#message').append(_details(v)).fadeIn(1000);
      }
     });
+   }
+   function _details(obj){
+    var details = '<b>Details:</b><br/>';
+    $j.each(obj, function(a, b){
+     details += '<b>'+a+'</b>'+': '+b+'<br/>';
+    });
+    return details;
    }
    $j('#default').AJAX({appID:'<?php echo $_SESSION[$libs->_getRealIPv4()]; ?>',callback:function(){ _message(this); }});
   });
