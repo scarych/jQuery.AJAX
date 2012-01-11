@@ -22,7 +22,7 @@
   as well as generating customized CSRF tokens on server and assigning them on a per
   form basis)
 * Checksum support for serialized form data using the Content-MD5 header value due to
-  native base64 and md5 encoding
+  native base64 and md5 encoding (RFC-2616.14-15)
 
 ## OPTIONS:
 * appID:       Application ID or CSRF token option
