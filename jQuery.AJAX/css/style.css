@@ -70,7 +70,7 @@ label {
 #contact-form select,
 #contact-form textarea {
  width:65%;
- border: 1px solid #162C3C;
+ border: 1px solid #BAC9A9;
  margin-bottom:20px;
  padding:4px;
 }
@@ -78,8 +78,8 @@ label {
 #contact-form input:focus,
 #contact-form select:focus,
 #contact-form textarea:focus {
- border: 1px solid #162C3C;
- background-color: #fff;
+ border: 1px solid #F2D680;
+ background-color: #F3FFCF;
 }
 
 #contact-form textarea {
@@ -98,11 +98,11 @@ label {
 
 #contact-form #submit-button {
  width: 80%;
- background-color:#304E50;
- color:#FFF;
+ background-color:#F3FFCF;
+ color:#000;
  font-style: oblique;
  font-weight: bold;
- border: 1px solid #889673;
+ border: 1px solid #BAC9A9;
  display:block;
  float:right;
  margin-bottom:0px;
@@ -111,8 +111,8 @@ label {
 }
 
 #contact-form #submit-button:hover {
- border: 1px solid #304E50;
- background-color: #889673;
+ border: 1px solid #F2D680;
+ background-color: #F3FFCF;
 }
 
 #contact-form #submit-button:active {
