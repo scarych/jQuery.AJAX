@@ -100,7 +100,7 @@
    * @function md5
    * @abstract Performs MD5 hash of serialized form data. The data is then
    *           to be used on the server as a checksum
-   * @author   http://www.webtoolkit.info/javascript-base64.html
+   * @author   http://www.webtoolkit.info/javascript-md5.html
    */
   var md5 = function(v){
    function RotateLeft(lValue, iShiftBits){
