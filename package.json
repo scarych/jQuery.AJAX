@@ -1,0 +1,48 @@
+{
+    "name": "jQuery.AJAX",
+    "version": "0.3.2",
+    "title": "jQuery.AJAX",
+    "author": {
+        "name": "Jason Gerfen",
+        "url": "https://github.com/jas-"
+    },
+    "licenses": [
+        {
+            "type": "GPLv2",
+            "url": "GPL-LICENSE.txt"
+        }
+    ],
+    "dependencies": {
+        "jquery": "1.7"
+    },
+    "description": "Process X/HTML/5 form XMLHttpRequests with CSRF, same origin restrictions and checksums using RFC-2616.14-15 specifications",
+    "keywords": [
+        "XMLHttpRequests",
+        "Same Origin Restriction Support",
+        "Content-MD5 Header Checksum Support",
+        "Cross Site Request Forgery Support",
+        "Pre-callback Support",
+        "OnError-callback Support"
+    ],
+    "homepage": "https://github.com/jas-/jQuery.AJAX",
+    "maintainers": [
+        {
+            "name": "Jason Gerfen",
+            "url": "https://github.com/jas-/jQuery.AJAX"
+        }
+    ],
+    "files": [
+        "jQuery.AJAX/classes/class.libraries.php",
+        "jQuery.AJAX/css/style.css",
+        "jQuery.AJAX/css/images/error.png",
+        "jQuery.AJAX/css/images/info.png",
+        "jQuery.AJAX/css/images/success.png",
+        "jQuery.AJAX/css/images/warning.png",
+        "jQuery.AJAX/js/jQuery.AJAX.js",
+        "jQuery.AJAX/js/jQuery.AJAX.min.js",
+        "jQuery.AJAX/proxy.php",
+        "README.md",
+        "index.php",
+        "package.json"
+    ]
+}
