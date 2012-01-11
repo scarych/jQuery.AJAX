@@ -39,7 +39,7 @@ if (strcmp($_SERVER['HTTP_X_ALT_REFERER'], $_SESSION[$libs->_getRealIPv4()])!==0
                               'details'=>$details)));
 }
 
-/* verify associated Content-MD5 header value */
+/* verify associated Content-MD5 header value with serialized $_POST data */
 if (!empty($_POST)){
  if (strcmp(base64_decode($_SERVER['HTTP_CONTENT_MD5']), md5($libs->_serialize($_POST)))!==0){
   exit($libs->JSONencode(array('error'=>'The Content-MD5 value is incorrect. Checksum failed on submitted form data',
