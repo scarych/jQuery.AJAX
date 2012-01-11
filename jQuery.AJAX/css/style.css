@@ -1,6 +1,6 @@
 * {
  font-family: sans-serif;
- color: #162C3C;
+ color: #fff;
 }
 
 h2{
@@ -30,11 +30,11 @@ label {
 }
 
 #contact-form {
- background-color:#E2DB95;
+ background-color:#697060;
  width:650px;
  padding:20px;
  margin: 50px auto;
- border: 6px solid #162C3C;
+ border: 6px solid #EB9C4D;
  -moz-border-radius:15px;
  -webkit-border-radius:15px;
  border-radius:15px;
