@@ -73,6 +73,7 @@ label {
  border: 1px solid #BAC9A9;
  margin-bottom:20px;
  padding:4px;
+ color:#000;
 }
 
 #contact-form input:focus,
@@ -80,6 +81,7 @@ label {
 #contact-form textarea:focus {
  border: 1px solid #F2D680;
  background-color: #F3FFCF;
+ color:#000;
 }
 
 #contact-form textarea {
