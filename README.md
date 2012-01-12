@@ -29,6 +29,9 @@
 * cache:       Enable or disable caching mechanisms
 * context:     Executes form submission and processes responses in context of current form
 * type:        Supports json (default), jsonp (for cross-domain support), xml, script and html data types
+* clickjack:   This enables the X-Frame-Options header which supports the default 'deny' option or 'sameorigin'
+* xss:         Here you can enable/disable (defaults to true) the 'X-XSS-Protection' header to help with XSS attacks
+* proxy:       Enable or disable proxy forwarding from https to http and vice versa. Allows http or https.
 * callback:    Optional function used once server recieves encrypted data
 * preCallback: Executes specified function prior to form submission
 * errCallback: Executes specified function when a problem occurs in XMLHttpRequest
@@ -36,33 +39,81 @@
 ## EXAMPLES:
 
 ### Default usage
+The default usage for this plug-in is as follows.
+
 ```javascript
 $('#form').AJAX();
 ```
 
 ### Using CSRF token (here we use PHP $_SESSION['token'])
-Please see NOTES section for more information about the CSRF feature.
+Please see NOTES section for more information about the CSRF feature. The proxy.php script accompanying
+this distribution has additional example usage as well.
 
 ```javascript
-$('#form').AJAX(appID:'<?echo $_SESSION["token"]); ?>'});
+$('#form').AJAX({appID:'<?echo $_SESSION["token"]); ?>'});
 ```
 
 ### Disable caching
+Need to disable caching? You can do that with the following option.
+
 ```javascript
 $('#form').AJAX({cache:false});
 ```
 
 ### Changing execution context
+Occasionally you may find that you need to execute a form within the context of a different DOM element. You can
+do that using the following option.
+
 ```javascript
 $('#form').AJAX({context:$('#DOMElement')});
 ```
 
 ### Disabling same-origin policy
+By using the JSONP data-type you can disable same-origin policy restrictions. Below is an example.
+
 ```javascript
 $('#form').AJAX({type:'jsonp'});
 ```
 
+### Enable 'ClickJacking' support
+This particular feature enables prevention methods within the users browser to prevent loading responses within
+a <frame> or <iframe> helping protect clients from nefarious users stealing authentication credentials etc. The
+first example will prevent all attempts to load content within a frame while the second option will only allow
+loading content within a frame from the same domain.
+
+```javascript
+$('#form').AJAX({clickjack:'deny'});
+```
+
+```javascript
+$('#form').AJAX({clickjack:'sameorigin'});
+```
+
+### Enable 'XSS' support
+While support for this particular feature may be limited across the spectrum of browsers enabling the for
+XMLHttpRequests will help your browsers with XSS attack vectors.
+
+```javascript
+$('#form').AJAX({xss:true});
+```
+
+### Enable prevention of proxy forwarding
+Proxy servers. Occasionally a user may use a proxy service which will not provide secure end to end 
+communication.
+
+Example; client->https->proxy->http->server or server->https->proxy->http->server.
+
+If your site uses HTTPS/SSL/TLS then you will want to enable this feature which will force proxy server
+requests to use the specified protocols.
+
+```javascript
+$('#form').AJAX({proxy:'https'});
+```
+
 ### Executing callback function on AJAX success response
+This feature can come in handy if you wish to (recommended) display response messages from the server about
+form submission statuses.
+
 ```javascript
 $('#form').AJAX({callback:function(x){
   alert(x);
@@ -71,6 +122,9 @@ $('#form').AJAX({callback:function(x){
 ```
 
 ### Executing callback function pre AJAX submission
+Ever want to add that fancy animated gif spinner once a form has been submitted? You can load that using
+the pre-callback method as shown below.
+
 ```javascript
 $('#form').AJAX({preCallback:function(x){
   alert(x);
@@ -79,6 +133,9 @@ $('#form').AJAX({preCallback:function(x){
 ```
 
 ### Executing callback function on AJAX error response
+Wish to provide some messaging to the user if something goes wrong? Here is a great method for doing just
+that.
+
 ```javascript
 $('#form').AJAX({errCallback:function(x){
   alert(x);
