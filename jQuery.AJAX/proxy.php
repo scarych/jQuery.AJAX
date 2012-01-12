@@ -28,7 +28,7 @@ if (!isset($_SESSION[$libs->_getRealIPv4()])){
 header('X-Alt-Referer: '.getenv('HTTP_X_ALT_REFERER'));
 header('X-Forwarded-Proto: '.getenv('HTTP_X_FORWARDED_PROTO'));
 header('X-Frame-Options: '.getenv('HTTP_X_FRAME_OPTIONS'));
-header('X-XSS-Protecton: '.getenv('HTTP_X_XSS_PROTECTION'));
+header('X-XSS-Protection: '.getenv('HTTP_X_XSS_PROTECTION'));
 
 /* regenerate the session ID to help prevent replay' attacks */
 session_regenerate_id(true);
@@ -38,6 +38,9 @@ $details = array('Remote address'=>$libs->_getRealIPv4(),
                  'Session ID'=>$_SESSION[$libs->_getRealIPv4()],
                  'X-Alt-Referer header'=>getenv('HTTP_X_ALT_REFERER'),
                  'Content-MD5 header'=>getenv('HTTP_CONTENT_MD5'),
+                 'X-XSS-Protection'=>getenv('HTTP_X_XSS_PROTECTION'),
+                 'X-Frame-Options'=>getenv('HTTP_X_FRAME_OPTIONS'),
+                 'X-Forwarded-Proto'=>getenv('HTTP_X_FORWARDED_PROTO'),
                  'Serialized POST data'=>$libs->_serialize($_POST));
 
 /* verify an XMLHttpRequest was made */
