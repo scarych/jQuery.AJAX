@@ -98,7 +98,7 @@ $('#form').AJAX({xss:true});
 ```
 
 ### Enable prevention of proxy forwarding
-Proxy servers. Occasionally a user may use a proxy service which will not provide secure end to end 
+Proxy servers. Occasionally a user may use a proxy service which will not provide secure end to end
 communication.
 
 Example; client->https->proxy->http->server or server->https->proxy->http->server.
@@ -140,6 +140,46 @@ that.
 $('#form').AJAX({errCallback:function(x){
   alert(x);
  }
+});
+```
+
+### Using all option available
+Here is a real-world example of using all of the available options to make effecient usage of this plugin. Of course
+this example simply pushes each callback method to the console you could use modal windows, alert boxes, message boxes
+and other means of notifications fairly easily.
+
+```javascript
+$(document).ready(function(){
+ /* send everything to the console */
+ function _log(obj){
+  $.each(obj, function(k, v){
+   console.log(k+' => 'v);
+  });
+ }
+ /* callback before send */
+ function _pre(obj){
+  return _log(obj);
+ }
+ /* callback on error */
+ function _err(obj){
+  return _log(obj);
+ }
+ /* callback on success */
+ function _success(obj){
+  return _log(obj);
+ }
+ $('#formID').AJAX({
+  appID:        '<?php echo $_SESSION['token']; ?>',
+  cache:        true,
+  context:      $('#messageBoxID'),
+  type:         'jsonp',
+  clickjack:    'sameorigin',
+  xss:          true,
+  proxy:        'https',
+  callback:     _success(this),
+  preCallback:  _pre(this),
+  errCallback:  _err(this)
+ });
 });
 ```
 
