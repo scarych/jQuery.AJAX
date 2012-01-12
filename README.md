@@ -18,6 +18,10 @@
 * pre form submission callback function support
 * error response callback function support
 * success response callback function support
+* Use of click jacking iframe prevention (when working with proxy or other client/client services)
+* Use of XSS prevention headers (specific to IE)
+* Reqruired use of specified protocol. Allows for http or https.
+* Strict mode which verifies proxy or server retains same custom headers in responses
 * CSRF identifier option specified in X-Alt-Referer header (can be verified on server
   as well as generating customized CSRF tokens on server and assigning them on a per
   form basis)
@@ -32,6 +36,7 @@
 * clickjack:   This enables the X-Frame-Options header which supports the default 'deny' option or 'sameorigin'
 * xss:         Here you can enable/disable (defaults to true) the 'X-XSS-Protection' header to help with XSS attacks
 * proxy:       Enable or disable proxy forwarding from https to http and vice versa. Allows http or https.
+* strict:      The strict mode of operation works by ensuring those headers which have been configured for use by this script are also sent back to the client by the remote server and/or proxy service
 * callback:    Optional function used once server recieves encrypted data
 * preCallback: Executes specified function prior to form submission
 * errCallback: Executes specified function when a problem occurs in XMLHttpRequest
@@ -108,6 +113,15 @@ requests to use the specified protocols.
 
 ```javascript
 $('#form').AJAX({proxy:'https'});
+```
+
+### Enable strict mode
+This mode will require that any response over XMLHttpRequest uses the same header options that were
+originally sent from the client. For example; if the client set the X-XSS-Protection header the remote
+server and/or proxy must send the same header back to the client.
+
+```javascript
+$('#form').AJAX({strict:true});
 ```
 
 ### Executing callback function on AJAX success response
