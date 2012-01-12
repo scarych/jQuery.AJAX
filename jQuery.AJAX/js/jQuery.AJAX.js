@@ -43,6 +43,7 @@
    clickjack:    'deny',
    xss:          true,
    proxy:        'http',
+   strict:       true,
    callback:     function(){},
    preCallback:  function(){},
    errCallback:  function(){}
@@ -90,9 +91,13 @@
        ((opts.preCallback)&&($.isFunction(opts.preCallback))) ?
          opts.preCallback(xhr) : false;
       },
-      success: function(x){
-       ((opts.callback)&&($.isFunction(opts.callback))) ?
-         opts.callback.call(x) : false;
+      success: function(x, status, xhr){
+       ((opts.strict)&&(opts.strict==true)&&(_vE(xhr, opts)==true)&&
+        (opts.callback)&&($.isFunction(opts.callback))) ?
+         opts.callback.call(x) :
+          ((opts.strict)&&(opts.strict==true)&&(_vE(xhr, opts)==false)&&
+           (opts.errCallback)&&($.isFunction(opts.errCallback))) ?
+            opts.errCallback.call(x) : console.log(x);
       },
       error: function(xhr, status, error){
        ((opts.errCallback)&&($.isFunction(opts.errCallback))) ?
@@ -103,6 +108,31 @@
     });
    }
   };
+
+  /**
+   * @function _vE
+   * @abstract Performs header validation if transaction type is set
+   *           to strict (empty = false)
+   */
+  var _vE = function(xhr, o){
+   return ((vStr(xhr.getResponseHeader('X-Alt-Referer')))&&
+           (vStr(xhr.getResponseHeader('X-Forwarded-Proto')))&&
+           (vStr(xhr.getResponseHeader('X-Frame-Options')))&&
+           (vStr(xhr.getResponseHeader('X-XSS-Protection')))) ? _vM(xhr, o) : false;
+  }
+
+  /**
+   * @function _vM
+   * @abstract Performs header validation if transaction type is set
+   *           to strict (opts != headers = false)
+   */
+  var _vM = function(xhr, o){
+   var xss = (o.xss) ? '1;mode=block' : '0';
+   return ((xhr.getResponseHeader('X-Alt-Referer')==o.appID)&&
+           (xhr.getResponseHeader('X-Forwarded-Proto')==o.proxy)&&
+           (xhr.getResponseHeader('X-Frame-Options')==o.clickjack)&&
+           (xhr.getResponseHeader('X-XSS-Protection')==xss)) ? true : false;
+  }
 
   /**
    * @function md5
