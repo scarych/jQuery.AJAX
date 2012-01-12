@@ -42,7 +42,7 @@
    type:         'json',
    clickjack:    true,
    xss:          true,
-   proxy:        true,
+   proxy:        'http',
    callback:     function(){},
    preCallback:  function(){},
    errCallback:  function(){}
