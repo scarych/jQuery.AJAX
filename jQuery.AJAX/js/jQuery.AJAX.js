@@ -40,6 +40,9 @@
    cache:        true,
    context:      $(this),
    type:         'json',
+   clickjack:    true,
+   xss:          true,
+   proxy:        true,
    callback:     function(){},
    preCallback:  function(){},
    errCallback:  function(){}
@@ -74,6 +77,13 @@
       dataType: opts.type,
       beforeSend: function(xhr){
        xhr.setRequestHeader('X-Alt-Referer', opts.appID);
+       xhr.setRequestHeader('X-Forwarded-Proto', opts.proxy);
+       if (opts.clickjack){ 
+        xhr.setRequestHeader('X-Frame-Options', 'deny');
+       }
+       if (opts.xss){
+        xhr.setRequestHeader('X-XSS-Protection', '1;mode=block');
+       }
        if (opts.formID.serialize()){
         xhr.setRequestHeader('Content-MD5', base64.encode(md5(_data)));
        } else {
