@@ -191,6 +191,7 @@ $(document).ready(function(){
   clickjack:    'sameorigin',
   xss:          true,
   proxy:        'https',
+  strict:       true,
   callback:     _success(this),
   preCallback:  _pre(this),
   errCallback:  _err(this)
