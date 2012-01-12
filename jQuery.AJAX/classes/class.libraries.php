@@ -126,8 +126,8 @@ class libraries
  {
   if (!empty($l)){
    foreach (explode(',', $l) as $i){
-    if (_ip(trim($i))) {
-     return (!_ip(trim($i))) ? false : $i;
+    if ($this->_ip(trim($i))) {
+     return (!$this->_ip(trim($i))) ? false : $i;
     }
    }
   } else {
