@@ -17,6 +17,12 @@ if (!isset($_SESSION[$libs->_getRealIPv4()])){
  $_SESSION[$libs->_getRealIPv4()]=$libs->_uuid();
 }
 
+/* setup headers */
+header('X-Alt-Referer: '.$_SESSION[$libs->_getRealIPv4()]);
+header('X-Forwarded-Proto: http');
+header('X-Frame-Options: deny');
+header('X-XSS-Protecton: 1;mode=deny');
+
 /* regenerate the session ID to help prevent replay's */
 session_regenerate_id(true);
 
