@@ -118,7 +118,8 @@ $('#form').AJAX({proxy:'https'});
 ### Enable strict mode
 This mode will require that any response over XMLHttpRequest uses the same header options that were
 originally sent from the client. For example; if the client set the X-XSS-Protection header the remote
-server and/or proxy must send the same header back to the client.
+server and/or proxy must send the same header back to the client. Please see the NOTES section labeled
+'strict mode' for more information.
 
 ```javascript
 $('#form').AJAX({strict:true});
@@ -229,6 +230,28 @@ based on what the client headers look like. In the event of a MITM attack
 having the proxy.php script set these will remove the protection the client
 originially enabled leaving them vulnerable to clickjacking, xss and
 transport protocol stripping due to untrusted proxies.
+
+### Strict mode
+Use of this mode requires that the server replay or re-create the same HTTP
+headers that were sent to it from the client. If this mode is enabled and the
+server or proxy handling responses does not use or set these options any
+client callback functionality will be discarded as further processing should not
+take place if these conditions are not met when strict mode is on.
+
+Please review the proxy.php & index.php script's accompanying this package for detailed
+examples. Or simply ensure the following are served up by the server or proxy
+handling responses for clients using this project.
+
+```php
+/* setup headers */
+header('X-Alt-Referer: '.getenv('HTTP_X_ALT_REFERER'));
+header('X-Forwarded-Proto: http');
+header('X-Frame-Options: deny');
+header('X-XSS-Protection: 1;mode=deny');
+```
+
+* please note the 'X-Alt-Referer' option must be set to the same value the client
+provided.
 
 Author: Jason Gerfen <jason.gerfen@gmail.com>
 License: GPL (see LICENSE)
