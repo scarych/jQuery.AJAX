@@ -168,8 +168,9 @@ $(document).ready(function(){
  function _success(obj){
   return _log(obj);
  }
+ /* bind our ajax call to the form and setup some params */
  $('#formID').AJAX({
-  appID:        '<?php echo $_SESSION['token']; ?>',
+  appID:        '<?php echo $_SESSION["token"]; ?>',
   cache:        true,
   context:      $('#messageBoxID'),
   type:         'jsonp',
