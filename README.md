@@ -202,5 +202,18 @@ also see the proxy.php script for more information on this feature. For more
 information regarding the 'Content-MD5' header option please see the following
 link http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.15
 
+### Header options
+This package uses header options that are not always configured within every
+web server environment. I wanted to make a couple of notes on these options
+and this project examples;
+
+The proxy.php script does rely on the headers it recieved from the index.php
+for example, and like a parrot, mimics them when responses are sent. In a
+production environment the script should not attempt to set these headers
+based on what the client headers look like. In the event of a MITM attack
+having the proxy.php script set these will remove the protection the client
+originially enabled leaving them vulnerable to clickjacking, xss and
+transport protocol stripping due to untrusted proxies.
+
 Author: Jason Gerfen <jason.gerfen@gmail.com>
 License: GPL (see LICENSE)
