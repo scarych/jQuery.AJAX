@@ -40,7 +40,7 @@ session_regenerate_id(true);
  <script src="http://code.jquery.com/jquery.js"></script>
 
  <!-- Load the jQuery handleStorage plugin -->
- <script src="jQuery.AJAX/js/jQuery.AJAX.js"></script>
+ <script src="jQuery.AJAX/js/jQuery.AJAX.min.js"></script>
 
  <!-- Global _message function to handle AJAX returns -->
  <script>
