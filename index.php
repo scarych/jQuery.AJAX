@@ -40,7 +40,7 @@ session_regenerate_id(true);
  <script src="http://code.jquery.com/jquery.js"></script>
 
  <!-- Load the jQuery handleStorage plugin -->
- <script src="jQuery.AJAX/js/jQuery.AJAX.min.js"></script>
+ <script src="jQuery.AJAX/js/jQuery.AJAX.js"></script>
 
  <!-- Global _message function to handle AJAX returns -->
  <script>
@@ -73,7 +73,7 @@ session_regenerate_id(true);
     });
     return details;
    }
-   $j('#default').AJAX({appID:'<?php echo $_SESSION[$libs->_getRealIPv4()]; ?>',callback:function(){ _message(this); }});
+   $j('#default').AJAX({appID:'<?php echo $_SESSION[$libs->_getRealIPv4()]; ?>',callback:function(){ _message(this); },strict:true});
   });
  </script>
 </head>
