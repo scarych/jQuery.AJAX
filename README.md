@@ -1,4 +1,3 @@
-
 #jQuery plugin for AJAX functionality
 
   Simple wrapper for XMLHttpRequests using jQuery. This wrapper does however
@@ -158,7 +157,7 @@ $('#form').AJAX({errCallback:function(x){
 });
 ```
 
-### Using all option available
+### Using all available options
 Here is a real-world example of using all of the available options to make effecient usage of this plugin. Of course
 this example simply pushes each callback method to the console you could use modal windows, alert boxes, message boxes
 and other means of notifications fairly easily.
