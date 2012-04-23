@@ -1,4 +1,5 @@
-#jQuery plugin for AJAX functionality (minimal RESTful client/server implementation)
+#jQuery plugin for AJAX functionality
+##A minimal RESTful client/server implementation
 
   Simple wrapper for XMLHttpRequests using jQuery. This wrapper does however
   support many of the current .ajax() functions configurable parameters in
